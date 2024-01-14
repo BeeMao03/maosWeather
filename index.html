@@ -6,18 +6,66 @@
     <title>Document</title>
   </head>
   <body>
-    <h1>Welcome to my Weather App</h1>
-    <footer>
-      This project was coded by
-      <a href="https://github.com/BeeMao03" target="_blank">Mariel Buzarquis</a
-      >, is on
-      <a href="https://github.com/BeeMao03/maosWeather" target="_blank"
-        >GitHub</a
-      >
-      and hosted on
-      <a href="https://weather-by-mariel-b.netlify.app/" target="_blank"
-        >Netlify</a
-      >
-    </footer>
+    <div id="mainBG">
+      <header>
+        <input
+          type="search"
+          placeholder="Enter a city..."
+          required
+          id="search_input" />
+        <input type="submit" value="Search" id="search_button" />
+      </header>
+
+      <main>
+        <!--First column-->
+        <div id="currentTemperatureAndCity">
+          <h1 id="main_city">Asunción</h1>
+          <span class="current_temperature_icon">☀️</span>
+          <span class="current_temperature_value">33</span>
+          <span class="current_temperature_unit">°C</span>
+          <p class="feels_like">
+            Feels like <span class="feels_like_temperature">37</span>°C
+          </p>
+          <p class="high_and_low">
+            H: <span class="high_temperature">37</span>° | L:
+            <span class="low_temperature">24</span>°
+          </p>
+        </div>
+        <!--Second Column-->
+        <div id="currentDetails">
+          <p class="current_details">
+            <span id="currentDate">Saturday</span>
+            <span id="currentHour">20</span>:<span id="currentMinutes">03</span
+            >, <span id="currentDescription">sunny</span>
+            <br />
+            Humidity: <strong><span id="humidity">67</span>%</strong>
+            <br />
+            Wind:
+            <strong>
+              <span id="windSpeed">8</span
+              ><span id="speedUnit">km</span>/h</strong
+            >
+            <br />
+            Pressure: <strong><span id="pressure">1,007</span>hPa</strong>
+          </p>
+        </div>
+      </main>
+
+      <footer>
+        This project was coded by
+        <a href="https://github.com/BeeMao03" target="_blank"
+          >Mariel Buzarquis</a
+        >, is on
+        <a href="https://github.com/BeeMao03/maosWeather" target="_blank"
+          >GitHub</a
+        >
+        and hosted on
+        <a href="https://weather-by-mariel-b.netlify.app/" target="_blank"
+          >Netlify</a
+        >
+        <br />
+        <button>Imperial Units</button>
+      </footer>
+    </div>
   </body>
 </html>
