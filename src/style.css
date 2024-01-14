@@ -15,14 +15,19 @@ body {
   background: white;
   border-radius: 5px;
   margin: 50px auto;
-  padding: 50px;
+  padding: 30px;
   box-shadow: 0 30px 50px rgba(37, 15, 30, 0.3);
+  box-sizing: border-box;
+  resize: horizontal;
+  max-width: 600px;
 }
 
 a {
   text-decoration: none;
   color: rgb(237, 121, 95);
 }
+
+/* FOR THE HEADER */
 
 header {
   padding-bottom: 25px;
@@ -38,7 +43,7 @@ header {
   );
   border: none;
   border-radius: 5px;
-  width: 75%;
+  width: 78%;
   padding: 15px;
   font-size: 16px;
   color: white;
@@ -58,11 +63,73 @@ header {
   );
   border: none;
   border-radius: 25px;
-  padding: 15px 30px;
-  margin-left: 6px;
+  padding: 15px 25px;
+  margin-left: 5px;
   font-size: 16px;
   color: white;
 }
+
+/* FOR THE MAIN */
+
+main {
+  padding: 30px 0;
+}
+
+.weather_app_data {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.mainCity {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding-bottom: 7px;
+  font-size: 55px;
+  line-height: 48px;
+}
+
+.current_details {
+  font-size: 16px;
+  line-height: 20px;
+  color: rgb(147, 147, 147);
+}
+
+strong {
+  color: rgb(237, 121, 95);
+}
+
+.current_temperature_icon {
+  position: relative;
+  top: -8px;
+  font-size: 40px;
+  margin-right: 3px;
+}
+
+.current_temperature_value {
+  font-size: 80px;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+}
+
+.current_temperature_unit {
+  font-size: 35px;
+  font-family: "Roboto", sans-serif;
+  font-weight: bolder;
+  position: relative;
+  top: -38px;
+}
+
+.feels_like_high_low {
+  font-size: 20px;
+  text-align: center;
+  color: rgb(147, 147, 147);
+}
+
+.feels_like {
+  margin-top: 5px 0 5px;
+}
+/* FOR THE FOOTER */
 
 footer {
   text-align: center;
@@ -89,8 +156,14 @@ button {
   color: white;
 }
 
+/* ADDITIONAL */
+
 .search_button:hover,
 button:hover {
   cursor: pointer;
   background: rgb(189, 78, 94) 89.1%;
+}
+
+a:hover {
+  text-decoration: underline;
 }
