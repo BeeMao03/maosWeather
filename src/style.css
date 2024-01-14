@@ -1,0 +1,21 @@
+body {
+  background: linear-gradient(
+    110.3deg,
+    rgb(245, 206, 122) 8.7%,
+    rgb(237, 121, 95) 47.5%,
+    rgb(189, 78, 94) 89.1%
+  );
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: "Noto Sans", sans-serif;
+}
+
+.mainBG {
+  display: block;
+  background: white;
+  border-radius: 5px;
+  margin: 50px auto;
+  padding: 50px;
+  width: 70%;
+  box-shadow: 0 30px 50px rgba(37, 15, 30, 0.3);
+}
