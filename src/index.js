@@ -10,6 +10,7 @@ async function refreshWeather(responseCity) {
   let pressureElement = document.querySelector("#pressure");
   let feelsLikeElement = document.querySelector("#feels_like_temperature");
   let timeElement = document.querySelector("#current_time");
+  let iconElement = document.querySelector("#icon");
   let date = new Date(responseCity.data.time * 1000);
   let lon = responseCity.data.coordinates.longitude;
   let lat = responseCity.data.coordinates.latitude;
@@ -17,9 +18,11 @@ async function refreshWeather(responseCity) {
   // Call the other API
   let apiForecastUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${lon}&lat=${lat}&key=${apiKey}`;
   let responseForecast = await axios.get(apiForecastUrl);
+  console.log(responseForecast);
 
   //Forecast
   let highTemperatureElement = document.querySelector("#high_temperature");
+  let lowTemperatureElement = document.querySelector("#low_temperature");
 
   //City
   temperatureElement.innerHTML = currentTemperature;
@@ -32,6 +35,13 @@ async function refreshWeather(responseCity) {
     responseCity.data.temperature.feels_like
   );
   timeElement.innerHTML = formatDate(date);
+  iconElement.innerHTML = `<img src="${responseCity.data.condition.icon_url}" class="current_temperature_icon" />`;
+  highTemperatureElement.innerHTML = Math.round(
+    responseForecast.data.daily[date.getDay()].temperature.maximum
+  );
+  lowTemperatureElement.innerHTML = Math.round(
+    responseForecast.data.daily[date.getDay()].temperature.minimum
+  );
 }
 
 function formatDate(date) {

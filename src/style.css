@@ -12,7 +12,7 @@ body {
 
 .mainBG {
   display: block;
-  background: white;
+  background: rgb(255, 238, 227);
   border-radius: 5px;
   margin: 50px auto;
   padding: 30px;
@@ -86,7 +86,7 @@ main {
   font-family: "Roboto", sans-serif;
   margin: 0;
   padding-bottom: 7px;
-  font-size: 55px;
+  font-size: 50px;
   line-height: 48px;
 }
 
@@ -102,15 +102,17 @@ strong {
 
 .current_temperature_icon {
   position: relative;
-  top: -8px;
-  font-size: 40px;
-  margin-right: 3px;
+  top: 20px;
+  width: 80px;
+  height: 80px;
+  margin-top: 22px;
 }
 
 .current_temperature_value {
   font-size: 80px;
   font-family: "Roboto", sans-serif;
   font-weight: bold;
+  line-height: 88px;
 }
 
 .current_temperature_unit {
