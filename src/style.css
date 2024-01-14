@@ -25,7 +25,6 @@ body {
 a {
   text-decoration: none;
   color: rgb(237, 121, 95);
-  transition: all 200ms ease-in-out;
 }
 
 /* FOR THE HEADER */
@@ -68,7 +67,6 @@ header {
   margin-left: 5px;
   font-size: 16px;
   color: white;
-  transition: all 200ms ease-in-out;
 }
 
 /* FOR THE MAIN */
@@ -156,7 +154,6 @@ button {
   padding: 10px 20px;
   font-size: 14px;
   color: white;
-  transition: all 200ms ease-in-out;
 }
 
 /* ADDITIONAL */
