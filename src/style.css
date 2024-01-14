@@ -16,6 +16,81 @@ body {
   border-radius: 5px;
   margin: 50px auto;
   padding: 50px;
-  width: 70%;
   box-shadow: 0 30px 50px rgba(37, 15, 30, 0.3);
+}
+
+a {
+  text-decoration: none;
+  color: rgb(237, 121, 95);
+}
+
+header {
+  padding-bottom: 25px;
+  border-bottom: 2px solid rgba(237, 121, 95, 0.3);
+}
+
+.search_form {
+  background: linear-gradient(
+    110.3deg,
+    rgb(245, 206, 122) 8.7%,
+    rgb(237, 121, 95) 47.5%,
+    rgb(189, 78, 94) 89.1%
+  );
+  border: none;
+  border-radius: 5px;
+  width: 75%;
+  padding: 15px;
+  font-size: 16px;
+  color: white;
+}
+
+::placeholder {
+  color: white;
+  opacity: 0.7;
+}
+
+.search_button {
+  background: linear-gradient(
+    110.3deg,
+    rgb(245, 206, 122) 8.7%,
+    rgb(237, 121, 95) 47.5%,
+    rgb(189, 78, 94) 89.1%
+  );
+  border: none;
+  border-radius: 25px;
+  padding: 15px 30px;
+  margin-left: 6px;
+  font-size: 16px;
+  color: white;
+}
+
+footer {
+  text-align: center;
+  font-size: 14px;
+  color: rgb(147, 147, 147);
+  font-family: monospace;
+  font-weight: lighter;
+  padding-top: 25px;
+  border-top: 1.5px solid rgba(237, 121, 95, 0.3);
+}
+
+button {
+  margin-top: 20px;
+  background: linear-gradient(
+    110.3deg,
+    rgb(245, 206, 122) 8.7%,
+    rgb(237, 121, 95) 47.5%,
+    rgb(189, 78, 94) 89.1%
+  );
+  border: 2px solid rgb(189, 78, 94);
+  border-radius: 15px;
+  padding: 10px 20px;
+  font-size: 14px;
+  color: white;
+}
+
+.search_button:hover,
+button:hover {
+  cursor: pointer;
+  background: rgb(189, 78, 94) 89.1%;
 }
