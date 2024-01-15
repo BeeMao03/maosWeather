@@ -1,4 +1,5 @@
 const apiKey = "t8be874ao00e969ec72593d742ee985f";
+let units = "metric";
 
 async function refreshWeather(responseCity) {
   let temperatureElement = document.querySelector("#current_temperature_value");
@@ -16,7 +17,7 @@ async function refreshWeather(responseCity) {
   let lat = responseCity.data.coordinates.latitude;
 
   // Call the other API
-  let apiForecastUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${lon}&lat=${lat}&key=${apiKey}`;
+  let apiForecastUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${lon}&lat=${lat}&key=${apiKey}&units=${units}`;
   let responseForecast = await axios.get(apiForecastUrl);
   console.log(responseForecast);
 
@@ -42,6 +43,18 @@ async function refreshWeather(responseCity) {
   lowTemperatureElement.innerHTML = Math.round(
     responseForecast.data.daily[date.getDay()].temperature.minimum
   );
+
+  if (units === "metric") {
+    let mainUnitNow = document.querySelector("#currentTemperatureUnit");
+    let secondaryUnitNow = document.querySelector(
+      "#currentTemperatureUnitSecundary"
+    );
+    let windUnitNow = document.querySelector("#speedUnit");
+
+    mainUnitNow.innerHTML = "°C";
+    secondaryUnitNow.innerHTML = "°C";
+    windUnitNow.innerHTML = "km/";
+  }
 
   let pageTheme = updatePageTheme(currentTemperature);
   updateElementClasses(pageTheme);
@@ -132,7 +145,8 @@ function formatDate(date) {
 }
 
 function searchCity(city) {
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
+  units = "metric";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(refreshWeather);
 }
 
@@ -147,6 +161,9 @@ let searchFormElement = document.querySelector("#search_form");
 searchFormElement.addEventListener("submit", searchSubmit);
 
 function changeUnits() {
+  if (units === "imperial") {
+    return;
+  }
   //Define elements
   let temperatureNowElement = document.querySelector(
     "#current_temperature_value"
@@ -185,6 +202,8 @@ function changeUnits() {
   mainUnitNow.innerHTML = "°F";
   secondaryUnitNow.innerHTML = "°F";
   windUnitNow.innerHTML = "mp";
+
+  units = "imperial";
 }
 
 let imperialUnitsButton = document.querySelector("#unitButton");
