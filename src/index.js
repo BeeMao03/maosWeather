@@ -42,6 +42,68 @@ async function refreshWeather(responseCity) {
   lowTemperatureElement.innerHTML = Math.round(
     responseForecast.data.daily[date.getDay()].temperature.minimum
   );
+
+  let pageTheme = updatePageTheme(currentTemperature);
+  updateElementClasses(pageTheme);
+}
+
+function updateElementClasses(pageTheme) {
+  let regex = /-(.*)/;
+  let bodyElement = document.querySelector("#backgroundBody");
+  bodyElement.className = bodyElement.className.replace(regex, `-${pageTheme}`);
+  let bgElement = document.querySelector("#mainBG");
+  bgElement.className = bgElement.className.replace(regex, `-${pageTheme}`);
+  for (let i = 1; i <= 3; i++) {
+    let linkElement = document.getElementById(`link${i}`);
+    linkElement.className = linkElement.className.replace(
+      regex,
+      `-${pageTheme}`
+    );
+  }
+  let headerElement = document.querySelector("#mainHeader");
+  headerElement.className = headerElement.className.replace(
+    regex,
+    `-${pageTheme}`
+  );
+  let footerElement = document.querySelector("#mainFooter");
+  footerElement.className = footerElement.className.replace(
+    regex,
+    `-${pageTheme}`
+  );
+  let inputElement = document.querySelector("#search_input");
+  inputElement.className = inputElement.className.replace(
+    regex,
+    `-${pageTheme}`
+  );
+  let searchButtonElement = document.querySelector("#search_button");
+  searchButtonElement.className = searchButtonElement.className.replace(
+    regex,
+    `-${[pageTheme]}`
+  );
+  let unitButtonElement = document.querySelector("#unitButton");
+  unitButtonElement.className = unitButtonElement.className.replace(
+    regex,
+    `-${pageTheme}`
+  );
+  for (let i = 1; i <= 5; i++) {
+    let strongElement = document.getElementById(`strongElement${i}`);
+    strongElement.className = strongElement.className.replace(
+      regex,
+      `-${pageTheme}`
+    );
+  }
+}
+
+function updatePageTheme(currentTemperature) {
+  let className;
+  if (currentTemperature < 15) {
+    className = "cool";
+  } else if (currentTemperature > 25) {
+    className = "warm";
+  } else {
+    className = "spring";
+  }
+  return className;
 }
 
 function formatDate(date) {

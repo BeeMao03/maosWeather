@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="src/style.css" />
+    <link rel="stylesheet" href="src/dynamic-styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -18,20 +19,20 @@
     <title>Mariel Weather App</title>
   </head>
 
-  <body>
-    <div class="mainBG">
-      <header>
+  <body class="body-warm" id="backgroundBody">
+    <div class="mainBG-warm" id="mainBG">
+      <header class="header-warm" id="mainHeader">
         <form id="search_form">
           <input
             type="search"
             placeholder="Enter a city..."
             required
-            class="search_form"
+            class="search_form-warm"
             id="search_input" />
           <input
             type="submit"
             value="Search"
-            class="search_button"
+            class="search_button-warm"
             id="search_button" />
         </form>
       </header>
@@ -47,15 +48,21 @@
                 <span id="currentDescription"></span>
                 <br />
                 <br />
-                Humidity: <strong><span id="humidity"></span>%</strong>
+                Humidity:
+                <strong class="strong-warm" id="strongElement1"
+                  ><span id="humidity"></span>%</strong
+                >
                 <br />
                 Wind:
-                <strong>
+                <strong class="strong-warm" id="strongElement2">
                   <span id="windSpeed"></span>
                   <span id="speedUnit">km/</span>h</strong
                 >
                 <br />
-                Pressure: <strong><span id="pressure"></span> hPa</strong>
+                Pressure:
+                <strong class="strong-warm" id="strongElement3"
+                  ><span id="pressure"></span> hPa</strong
+                >
               </p>
             </div>
           </div>
@@ -78,11 +85,11 @@
               ><span id="currentTemperatureUnit">°C</span>
               <br />
               H:
-              <strong class="strongDisplay">
+              <strong class="strong-warm" id="strongElement4">
                 <span class="high_temperature" id="high_temperature"></span>°
               </strong>
               | L:
-              <strong class="strongDisplay">
+              <strong class="strong-warm" id="strongElement5">
                 <span class="low_temperature" id="low_temperature"></span>°
               </strong>
             </p>
@@ -90,20 +97,32 @@
         </div>
       </main>
 
-      <footer>
+      <footer class="footer-warm" id="mainFooter">
         This project was coded by
-        <a href="https://github.com/BeeMao03" target="_blank"
+        <a
+          href="https://github.com/BeeMao03"
+          target="_blank"
+          class="link-warm"
+          id="link1"
           >Mariel Buzarquis</a
         >, is on
-        <a href="https://github.com/BeeMao03/maosWeather" target="_blank"
+        <a
+          href="https://github.com/BeeMao03/maosWeather"
+          target="_blank"
+          class="link-warm"
+          id="link2"
           >GitHub</a
         >
         and hosted on
-        <a href="https://weather-by-mariel-b.netlify.app/" target="_blank"
+        <a
+          href="https://weather-by-mariel-b.netlify.app/"
+          target="_blank"
+          class="link-warm"
+          id="link3"
           >Netlify</a
         >
         <br />
-        <button>Imperial Units</button>
+        <button class="unitButton-warm" id="unitButton">Imperial Units</button>
       </footer>
     </div>
     <script src="src/index.js"></script>
