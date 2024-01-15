@@ -146,4 +146,48 @@ function searchSubmit(event) {
 let searchFormElement = document.querySelector("#search_form");
 searchFormElement.addEventListener("submit", searchSubmit);
 
+function changeUnits() {
+  //Define elements
+  let temperatureNowElement = document.querySelector(
+    "#current_temperature_value"
+  );
+  let temperatureFeelsNow = document.querySelector("#feels_like_temperature");
+  let temperatureNowHigh = document.querySelector("#high_temperature");
+  let temperatureNowLow = document.querySelector("#low_temperature");
+  let windSpeedNow = document.querySelector("#windSpeed");
+  let mainUnitNow = document.querySelector("#currentTemperatureUnit");
+  let secondaryUnitNow = document.querySelector(
+    "#currentTemperatureUnitSecundary"
+  );
+  let windUnitNow = document.querySelector("#speedUnit");
+
+  //Change to imperial values
+  let temperatureNowFarenheit = Math.round(
+    (temperatureNowElement.innerHTML * 9) / 5 + 32
+  );
+  let temperatureFeelsFarenheit = Math.round(
+    (temperatureFeelsNow.innerHTML * 9) / 5 + 32
+  );
+  let temperatureHighFarenheit = Math.round(
+    (temperatureNowHigh.innerHTML * 9) / 5 + 32
+  );
+  let temperatureLowFarenheit = Math.round(
+    (temperatureNowLow.innerHTML * 9) / 5 + 32
+  );
+  let windSpeedImperial = (windSpeedNow.innerHTML / 1.609).toFixed(2);
+
+  //Change display
+  temperatureNowElement.innerHTML = temperatureNowFarenheit;
+  temperatureFeelsNow.innerHTML = temperatureFeelsFarenheit;
+  temperatureNowHigh.innerHTML = temperatureHighFarenheit;
+  temperatureNowLow.innerHTML = temperatureLowFarenheit;
+  windSpeedNow.innerHTML = windSpeedImperial;
+  mainUnitNow.innerHTML = "°F";
+  secondaryUnitNow.innerHTML = "°F";
+  windUnitNow.innerHTML = "mp";
+}
+
+let imperialUnitsButton = document.querySelector("#unitButton");
+imperialUnitsButton.addEventListener("click", changeUnits);
+
 searchCity("Asunción");
