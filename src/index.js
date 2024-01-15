@@ -109,9 +109,9 @@ function updateElementClasses(pageTheme) {
 
 function updatePageTheme(currentTemperature) {
   let className;
-  if (currentTemperature < 15) {
+  if (currentTemperature < 20) {
     className = "cool";
-  } else if (currentTemperature > 25) {
+  } else if (currentTemperature > 29) {
     className = "warm";
   } else {
     className = "spring";
