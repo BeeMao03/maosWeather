@@ -56,6 +56,9 @@ async function refreshWeather(responseCity) {
     windUnitNow.innerHTML = "km/";
   }
 
+  document.querySelector("#unitButton").innerHTML = "Imperial Units";
+  document.querySelector("#unitButton").onclick = changeUnitsToImperial;
+
   let pageTheme = updatePageTheme(currentTemperature);
   updateElementClasses(pageTheme);
 }
