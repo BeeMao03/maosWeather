@@ -157,10 +157,7 @@ function searchSubmit(event) {
   searchCity(searchInput.value);
 }
 
-let searchFormElement = document.querySelector("#search_form");
-searchFormElement.addEventListener("submit", searchSubmit);
-
-function changeUnits() {
+function changeUnitsToImperial() {
   if (units === "imperial") {
     return;
   }
@@ -204,9 +201,58 @@ function changeUnits() {
   windUnitNow.innerHTML = "mp";
 
   units = "imperial";
+  document.querySelector("#unitButton").innerHTML = "Metric Units";
+  document.querySelector("#unitButton").onclick = changeUnitsToMetric;
 }
 
-let imperialUnitsButton = document.querySelector("#unitButton");
-imperialUnitsButton.addEventListener("click", changeUnits);
+function changeUnitsToMetric() {
+  if (units === "metric") {
+    return;
+  }
 
+  let temperatureNowElement = document.querySelector(
+    "#current_temperature_value"
+  );
+  let temperatureFeelsNow = document.querySelector("#feels_like_temperature");
+  let temperatureNowHigh = document.querySelector("#high_temperature");
+  let temperatureNowLow = document.querySelector("#low_temperature");
+  let windSpeedNow = document.querySelector("#windSpeed");
+  let mainUnitNow = document.querySelector("#currentTemperatureUnit");
+  let secondaryUnitNow = document.querySelector(
+    "#currentTemperatureUnitSecundary"
+  );
+  let windUnitNow = document.querySelector("#speedUnit");
+
+  //Change to metric values
+  let temperatureNowCelsius = Math.round(
+    ((temperatureNowElement.innerHTML - 32) * 5) / 9
+  );
+  let temperatureFeelsCelsius = Math.round(
+    ((temperatureFeelsNow.innerHTML - 32) * 5) / 9
+  );
+  let temperatureHighCelsius = Math.round(
+    ((temperatureNowHigh.innerHTML - 32) * 5) / 9
+  );
+  let temperatureLowCelsius = Math.round(
+    ((temperatureNowLow.innerHTML - 32) * 5) / 9
+  );
+  let windSpeedMetric = (windSpeedNow.innerHTML * 1.609).toFixed(2);
+
+  //Change display
+  temperatureNowElement.innerHTML = temperatureNowCelsius;
+  temperatureFeelsNow.innerHTML = temperatureFeelsCelsius;
+  temperatureNowHigh.innerHTML = temperatureHighCelsius;
+  temperatureNowLow.innerHTML = temperatureLowCelsius;
+  windSpeedNow.innerHTML = windSpeedMetric;
+  mainUnitNow.innerHTML = "°C";
+  secondaryUnitNow.innerHTML = "°C";
+  windUnitNow.innerHTML = "km/";
+
+  units = "metric";
+  document.querySelector("#unitButton").innerHTML = "Imperial Units";
+  document.querySelector("#unitButton").onclick = changeUnitsToImperial;
+}
+
+let searchFormElement = document.querySelector("#search_form");
+searchFormElement.addEventListener("submit", searchSubmit);
 searchCity("Asunción");
