@@ -67,6 +67,9 @@ main {
 /* NEW FORECAST STUFF */
 
 .weather-forecast {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
   margin-top: 15px;
   text-align: center;
 }
@@ -78,7 +81,7 @@ main {
 }
 
 .weather-forecast-temperatures {
-  font-size: 16px;
+  font-size: 18px;
   color: rgb(237, 121, 95);
 }
 

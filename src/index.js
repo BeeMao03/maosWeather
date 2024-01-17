@@ -256,6 +256,33 @@ function changeUnitsToMetric() {
   document.querySelector("#unitButton").onclick = changeUnitsToImperial;
 }
 
+// FORECAST
+
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let daysForecast = ["Wed", "Thu", "Fri", "Sat", "Sun"];
+  let forecastHTML = "";
+
+  daysForecast.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+  <div class="weather-forecast-day">
+    <div class="weather-forecast-date">${day}</div>
+    <div class="weather-forecast-icon">☁️</div>
+    <div class="weather-forecast-temperatures">
+      <span class="temperature_max">32°</span>
+      <span class="temperature_min">26°</span>
+    </div>
+  </div>
+`;
+  });
+
+  forecastElement.innerHTML = forecastHTML;
+}
+
 let searchFormElement = document.querySelector("#search_form");
 searchFormElement.addEventListener("submit", searchSubmit);
 searchCity("Asunción");
+displayForecast();
