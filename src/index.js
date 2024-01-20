@@ -19,7 +19,7 @@ async function refreshWeather(responseCity) {
   // Call the other API
   let apiForecastUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${lon}&lat=${lat}&key=${apiKey}&units=${units}`;
   let responseForecast = await axios.get(apiForecastUrl);
-  console.log(responseForecast);
+  displayForecast(responseForecast, date.getDay());
 
   //Forecast
   let highTemperatureElement = document.querySelector("#high_temperature");
@@ -104,6 +104,22 @@ function updateElementClasses(pageTheme) {
   for (let i = 1; i <= 5; i++) {
     let strongElement = document.getElementById(`strongElement${i}`);
     strongElement.className = strongElement.className.replace(
+      regex,
+      `-${pageTheme}`
+    );
+  }
+  for (let i = 0; i < 5; i++) {
+    let maxTempElement = document.querySelector(
+      `#forecast_temperature_max_${i}`
+    );
+    let minTempElement = document.querySelector(
+      `#forecast_temperature_min_${i}`
+    );
+    maxTempElement.className = maxTempElement.className.replace(
+      regex,
+      `-${pageTheme}`
+    );
+    minTempElement.className = minTempElement.className.replace(
       regex,
       `-${pageTheme}`
     );
@@ -203,6 +219,25 @@ function changeUnitsToImperial() {
   secondaryUnitNow.innerHTML = "°F";
   windUnitNow.innerHTML = "mp";
 
+  //Forecast
+  for (let i = 0; i < 5; i++) {
+    let maxTempElement = document.querySelector(
+      `#forecast_temperature_max_${i}`
+    );
+    let minTempElement = document.querySelector(
+      `#forecast_temperature_min_${i}`
+    );
+    console.log(maxTempElement.innerHTML);
+
+    let maxTempFarenheit = Math.round((maxTempElement.innerHTML * 9) / 5 + 32);
+    let minTempFarenheit = Math.round((minTempElement.innerHTML * 9) / 5 + 32);
+
+    //change
+
+    maxTempElement.innerHTML = maxTempFarenheit;
+    minTempElement.innerHTML = minTempFarenheit;
+  }
+
   units = "imperial";
   document.querySelector("#unitButton").innerHTML = "Metric Units";
   document.querySelector("#unitButton").onclick = changeUnitsToMetric;
@@ -258,26 +293,41 @@ function changeUnitsToMetric() {
 
 // FORECAST
 
-function displayForecast() {
+function displayForecast(responseForecast, today) {
   let forecastElement = document.querySelector("#forecast");
 
-  let daysForecast = ["Wed", "Thu", "Fri", "Sat", "Sun"];
   let forecastHTML = "";
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-  daysForecast.forEach(function (day) {
+  console.log(responseForecast);
+  let currentDay = today;
+
+  for (let i = 0; i < 5; i++) {
+    if (currentDay > 6) {
+      currentDay = 0;
+    }
+    let day = responseForecast.data.daily[currentDay];
+    console.log(day);
     forecastHTML =
       forecastHTML +
       `
   <div class="weather-forecast-day">
-    <div class="weather-forecast-date">${day}</div>
-    <div class="weather-forecast-icon">☁️</div>
+    <div class="weather-forecast-date">${days[currentDay]}</div>
+    <div ><img src="${
+      day.condition.icon_url
+    }" class="weather-forecast-icon" /></div>
     <div class="weather-forecast-temperatures">
-      <span class="temperature_max">32°</span>
-      <span class="temperature_min">26°</span>
+      <span class="strong-warm" id="forecast_temperature_max_${i}">${Math.round(
+        day.temperature.maximum
+      )}°</span>
+      <span class="strong-warm" id="forecast_temperature_min_${i}">${Math.round(
+        day.temperature.minimum
+      )}°</span>
     </div>
   </div>
 `;
-  });
+    currentDay++;
+  }
 
   forecastElement.innerHTML = forecastHTML;
 }
@@ -285,4 +335,3 @@ function displayForecast() {
 let searchFormElement = document.querySelector("#search_form");
 searchFormElement.addEventListener("submit", searchSubmit);
 searchCity("Asunción");
-displayForecast();

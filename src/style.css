@@ -80,9 +80,11 @@ main {
   color: rgb(147, 147, 147);
 }
 
-.weather-forecast-temperatures {
-  font-size: 18px;
-  color: rgb(237, 121, 95);
+.weather-forecast-icon {
+  text-align: center;
+  width: 70px;
+  display: block;
+  margin: 0 auto;
 }
 
 .temperature_max {
