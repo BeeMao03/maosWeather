@@ -286,6 +286,24 @@ function changeUnitsToMetric() {
   secondaryUnitNow.innerHTML = "°C";
   windUnitNow.innerHTML = "km/";
 
+  for (let i = 0; i < 5; i++) {
+    let maxTempElement = document.querySelector(
+      `#forecast_temperature_max_${i}`
+    );
+    let minTempElement = document.querySelector(
+      `#forecast_temperature_min_${i}`
+    );
+    console.log(maxTempElement.innerHTML);
+
+    let maxTempCelsius = Math.round(((maxTempElement.innerHTML - 32) * 5) / 9);
+    let minTempCelsius = Math.round(((minTempElement.innerHTML - 32) * 5) / 9);
+
+    //change
+
+    maxTempElement.innerHTML = maxTempCelsius;
+    minTempElement.innerHTML = minTempCelsius;
+  }
+
   units = "metric";
   document.querySelector("#unitButton").innerHTML = "Imperial Units";
   document.querySelector("#unitButton").onclick = changeUnitsToImperial;
@@ -317,12 +335,16 @@ function displayForecast(responseForecast, today) {
       day.condition.icon_url
     }" class="weather-forecast-icon" /></div>
     <div class="weather-forecast-temperatures">
-      <span class="strong-warm" id="forecast_temperature_max_${i}">${Math.round(
+      <strong class="strong-warm" id="forecastElement${i}">
+        <span class="max_temperature" id="forecast_temperature_max_${i}">${Math.round(
         day.temperature.maximum
-      )}°</span>
-      <span class="strong-warm" id="forecast_temperature_min_${i}">${Math.round(
+      )}</span>°
+      </strong>
+      <span class="strong-warm" id="forecastElement${i}">
+        <span class="min_temperature" id="forecast_temperature_min_${i}">${Math.round(
         day.temperature.minimum
-      )}°</span>
+      )}</span>°
+      </span>
     </div>
   </div>
 `;
