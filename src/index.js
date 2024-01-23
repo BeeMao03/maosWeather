@@ -109,12 +109,8 @@ function updateElementClasses(pageTheme) {
     );
   }
   for (let i = 0; i < 5; i++) {
-    let maxTempElement = document.querySelector(
-      `#forecast_temperature_max_${i}`
-    );
-    let minTempElement = document.querySelector(
-      `#forecast_temperature_min_${i}`
-    );
+    let maxTempElement = document.querySelector(`#forecastMaxElement${i}`);
+    let minTempElement = document.querySelector(`#forecastMinElement${i}`);
     maxTempElement.className = maxTempElement.className.replace(
       regex,
       `-${pageTheme}`
@@ -335,12 +331,12 @@ function displayForecast(responseForecast, today) {
       day.condition.icon_url
     }" class="weather-forecast-icon" /></div>
     <div class="weather-forecast-temperatures">
-      <strong class="strong-warm" id="forecastElement${i}">
+      <strong class="strong-warm" id="forecastMaxElement${i}">
         <span class="max_temperature" id="forecast_temperature_max_${i}">${Math.round(
         day.temperature.maximum
       )}</span>°
       </strong>
-      <span class="strong-warm" id="forecastElement${i}">
+      <span class="strong-warm" id="forecastMinElement${i}">
         <span class="min_temperature" id="forecast_temperature_min_${i}">${Math.round(
         day.temperature.minimum
       )}</span>°
